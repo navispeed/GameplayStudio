@@ -9,10 +9,16 @@ import java.util.stream.Collectors;
 
 public class Combinaison implements Game {
 
+  private final int maxTry;
   private Player attacker;
   private Player defender;
   private int[] combinaison;
   private int[] lastTurn;
+  private int currentTurn = 0;
+
+  public Combinaison(int maxTry) {
+    this.maxTry = maxTry;
+  }
 
   @Override public void setPlayers(Player attacker, Player defender) {
     this.attacker = attacker;
@@ -34,11 +40,13 @@ public class Combinaison implements Game {
       }
     }
     attacker.sendIndice(indice);
-
+    currentTurn++;
   }
 
   @Override public Status getCurrentStatus() {
-    return lastTurn != null && Arrays.equals(combinaison, lastTurn) ? Status.ATTACKER_WIN : Status.CONTINUE;
+    return lastTurn != null && Arrays.equals(combinaison, lastTurn) ?
+        Status.ATTACKER_WIN :
+        (currentTurn == maxTry ? Status.DEFENDER_WIN : Status.CONTINUE);
   }
 
   private int[] convert(final int toConvert) {

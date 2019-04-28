@@ -28,4 +28,28 @@ public class Menu {
     return null;
   }
 
+  public static GameMode replay(GameMode current) {
+    int choice = 0;
+
+    while (choice == 0 || choice > 3) {
+      System.out.println("You finished the game, please make a choice:"
+          + "\n1. Replay " + current.toString() + " mode"
+          + "\n2. Replay (go to gamemode choice)"
+          + "\n3. exit"
+      );
+
+      choice = new Scanner(System.in).nextInt();
+      switch (choice) {
+        case 1:
+          return current;
+        case 2:
+          return run();
+        case 3:
+          System.exit(0);
+      }
+    }
+    //Should not happen
+    return null;
+  }
+
 }
