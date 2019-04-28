@@ -29,17 +29,5 @@ public class Main {
       final GameMode replay = Menu.replay(firstGamemode);
       GameFactory.createGame(replay, Configuration.getInstance()).run();
     }
-
-
-    //    while (true) {
-    //      Game g = new Combinaison();
-    //
-    //      g.setPlayers(new AI(Configuration.getInstance().getLength()), new AI(Configuration.getInstance().getLength()));
-    //      while (g.getCurrentStatus() != Game.Status.ATTACKER_WIN) {
-    //        g.runTurn();
-    //      }
-    //
-    //    }
-
   }
 }
