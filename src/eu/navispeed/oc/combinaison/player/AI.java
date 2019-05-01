@@ -18,7 +18,6 @@ public class AI implements Player {
 
   @Override public int askRandomSequence() {
     final int i = Math.abs(new Random().nextInt((int) Math.pow(10, length) - (int) Math.pow(10, length - 1)) + (int) Math.pow(10, length - 1));
-    System.out.println("You have to find " + i);
     return i;
   }
 

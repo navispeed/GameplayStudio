@@ -1,5 +1,6 @@
 package eu.navispeed.oc.combinaison;
 
+import com.sun.tools.javac.util.List;
 import eu.navispeed.oc.combinaison.manager.Configuration;
 import eu.navispeed.oc.combinaison.manager.GameFactory;
 import eu.navispeed.oc.combinaison.manager.GameMode;
@@ -10,6 +11,7 @@ import org.apache.logging.log4j.Logger;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.Properties;
 
 public class Main {
@@ -22,6 +24,7 @@ public class Main {
       properties.load(is);
     }
     Configuration.buildFromProperties(properties);
+    Configuration.getInstance().setDevMode(Arrays.asList(args).contains("-dev"));
 
     final GameMode firstGamemode = Menu.run();
     GameFactory.createGame(firstGamemode, Configuration.getInstance()).run();

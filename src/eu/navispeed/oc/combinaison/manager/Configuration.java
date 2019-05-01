@@ -36,4 +36,16 @@ public class Configuration {
   public int getLength() {
     return length;
   }
+
+  public void setDevMode(boolean devMode) {
+    this.devMode = devMode;
+  }
+
+  public void setMaxTry(int maxTry) {
+    this.maxTry = maxTry;
+  }
+
+  public void setLength(int length) {
+    this.length = length;
+  }
 }

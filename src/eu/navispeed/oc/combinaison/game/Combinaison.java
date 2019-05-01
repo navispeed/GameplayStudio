@@ -1,5 +1,6 @@
 package eu.navispeed.oc.combinaison.game;
 
+import eu.navispeed.oc.combinaison.manager.Configuration;
 import eu.navispeed.oc.combinaison.player.Player;
 
 import java.util.Arrays;
@@ -28,6 +29,9 @@ public class Combinaison implements Game {
   @Override public void runTurn() {
     if (lastTurn == null) {
       combinaison = convert(defender.askRandomSequence());
+    }
+    if (Configuration.getInstance().isDevMode()) {
+      System.out.println("Remember, you have to find " + Arrays.toString(combinaison));
     }
 
     final int solutionFromAttacker = attacker.askSolution();
